@@ -1,24 +1,18 @@
-# README
+# Projeto Vagas RH
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Este projeto consiste na criação de uma plataforma Web para que pessoas dos departamentos de RH de empresas criem vagas e sejam capazes de gerenciar todo processo de forma colaborativa. Além disso, a plataforma funciona como um site de busca de oportunidades para os visitantes. Um visitante pode conhecer empresas, ver suas vagas
+disponíveis e aplicar para estas vagas.
 
-Things you may want to cover:
+Para informações mais detalhadas do passo a passo e informações dos requisitos para desenvolvimento, por gentileza acessar os seguintes links: 
 
-* Ruby version
+Trello (https://trello.com/b/FkXkC8cL/plataforma-web-vagas)
 
-* System dependencies
+Os testes serão realizados através do Capybara/Rspec, sendo estas as únicas gems extras adicionadas ao projeto.
 
-* Configuration
+Comando `rspec` para visualização dos testes.
 
-* Database creation
+Documentações:
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Rails: (http://guides.rubyonrails.org/)
+rspec: (rspec/rspec-rails)
+capybara: (teamcapybara/capybara)
