@@ -7,12 +7,8 @@ Para informações mais detalhadas do passo a passo e informações dos requisit
 
 Trello (https://trello.com/b/FkXkC8cL/plataforma-web-vagas)
 
+Github (https://github.com/gvicencotti/vagas-rh)
+
 Os testes serão realizados através do Capybara/Rspec, sendo estas as únicas gems extras adicionadas ao projeto.
 
 Comando `rspec` para visualização dos testes.
-
-Documentações:
-
-Rails: (http://guides.rubyonrails.org/)
-rspec: (rspec/rspec-rails)
-capybara: (teamcapybara/capybara)
