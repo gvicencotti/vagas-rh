@@ -1,0 +1,9 @@
+<% @vacancies.each do |vacancy| %>
+  <dl>
+    <dt>Empresa</dt>
+    <dd><%= link_to vacancy.company, vacancy %></dd>
+    <dt>Cargo</dt>
+    <dd><%= vacancy.role %></dd>
+  </dl>
+  <hr>
+<% end %>
