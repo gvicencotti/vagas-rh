@@ -1,9 +1,15 @@
-<% @vacancies.each do |vacancy| %>
-  <dl>
-    <dt>Empresa</dt>
-    <dd><%= link_to vacancy.company, vacancy %></dd>
-    <dt>Cargo</dt>
-    <dd><%= vacancy.role %></dd>
-  </dl>
-  <hr>
+<% if @vacancies.empty? %>
+  <div class='warning'>Nenhuma vaga cadastrada!</div>
+<% else %>
+  <% @vacancies.each do |vacancy| %>
+    <dl>
+      <dt><h4>Empresa</h4></dt>
+      <dd><%= link_to vacancy.company, vacancy %></dd>
+      <dt><h4>Cargo</h4></dt>
+      <dd><%= vacancy.role %></dd>
+    </dl>
+    <hr>
+  <% end %>
 <% end %>
+
+<%= link_to 'Voltar', root_path%>

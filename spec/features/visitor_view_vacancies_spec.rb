@@ -41,4 +41,40 @@ feature 'Visitor view vacancies' do
     expect(page).to have_content('Santo Antonio de Posse - SP')
     expect(page).to have_content('31/03/2021')
   end
+
+  scenario 'and no vacancy is created' do
+  
+    visit root_path
+    click_on 'Vagas'
+
+    expect(page).to have_content('Nenhuma vaga cadastrada!')
+  end
+
+  scenario 'and return to home page' do
+    Vacancy.create!(company: 'Batatinha Feliz', role: 'Analista de Gestão de Riscos Pl',
+                    description: 'Elaborar Matriz de Riscos e Controles Internos', 
+                    requirements: 'Superior completo em Contabilidade e experiência anterior',
+                    localization: 'Santo Antonio de Posse - SP', expiration_date: '31/03/2021')
+    
+    visit root_path
+    click_on 'Vagas'
+    click_on 'Voltar'
+
+    expect(current_path).to eq root_path
+  end
+
+  scenario 'and return to vacancies' do
+    Vacancy.create!(company: 'Batatinha Feliz', role: 'Analista de Gestão de Riscos Pl',
+      description: 'Elaborar Matriz de Riscos e Controles Internos', 
+      requirements: 'Superior completo em Contabilidade e experiência anterior',
+      localization: 'Santo Antonio de Posse - SP', expiration_date: '31/03/2021')
+      
+    visit root_path
+    click_on 'Vagas'
+    click_on 'Batatinha Feliz'
+    click_on 'Voltar'
+
+    expect(current_path).to eq vacancies_path
+    
+  end  
 end
