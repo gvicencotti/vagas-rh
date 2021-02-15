@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_13_204755) do
+ActiveRecord::Schema.define(version: 2021_02_15_143829) do
 
   create_table "vacancies", force: :cascade do |t|
     t.string "company"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2021_02_13_204755) do
     t.date "expiration_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "status", default: 0, null: false
   end
 
 end
