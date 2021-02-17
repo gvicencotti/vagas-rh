@@ -1,0 +1,31 @@
+<h1>Nova Vaga</h1>
+
+<%= form_with(model: Vacancy.new) do |f| %>
+  
+  <div>
+    <%= f.label :company, 'Empresa' %>
+    <%= f.text_field :company %>
+  </div>
+  <div>
+    <%= f.label :role, 'Cargo' %>
+    <%= f.text_field :role %>
+  </div>
+  <div>
+    <%= f.label :description, 'Descrição' %>
+    <%= f.text_field :description %>
+  </div>
+  <div>
+    <%= f.label :requirements, 'Requisitos' %>
+    <%= f.text_field :requirements %>
+  </div>
+  <div>
+    <%= f.label :localization, 'Localização' %>
+    <%= f.text_field :localization %>
+  </div>
+  <div>
+    <%= f.label :expiration_date, 'Data de expiração' %>
+    <%= f.text_field :expiration_date %>
+  </div>
+  <%= f.submit 'Criar vaga' %>
+  
+<% end %>

@@ -1,5 +1,5 @@
 class Vacancy < ApplicationRecord
-  
+    
   enum status: { active: 0, inactive: 5 }
 
   def self.visitor_valid_vacancies
