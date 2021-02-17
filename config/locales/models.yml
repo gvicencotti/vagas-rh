@@ -1,0 +1,20 @@
+pt-Br:
+  activerecord:
+    models:
+      vacancy:
+        one: Vaga
+        other: Vagas
+      user:
+        one: Usuário
+        other: Usuários
+    attributes:
+      user:
+        email: E-mail
+        password: Senha
+      vacancy:
+        company: "Empresa"
+        role: "Cargo"
+        description: "Descrição"
+        requirements: "Requisitos"
+        localization: "Localização"
+        expiration_date: "Data de expiração"

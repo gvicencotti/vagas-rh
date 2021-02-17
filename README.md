@@ -9,6 +9,6 @@ Trello (https://trello.com/b/FkXkC8cL/plataforma-web-vagas)
 
 Github (https://github.com/gvicencotti/vagas-rh)
 
-Os testes serão realizados através do Capybara/Rspec, sendo estas as únicas gems extras adicionadas ao projeto.
+Os testes serão realizados através do Capybara/Rspec.
 
 Comando `rspec` para visualização dos testes.
