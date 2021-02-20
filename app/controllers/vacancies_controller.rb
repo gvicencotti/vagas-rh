@@ -9,6 +9,7 @@ class VacanciesController < ApplicationController
   end
 
   def new
+    @vacancy = Vacancy.new
   end
 
   def create
@@ -21,6 +22,6 @@ class VacanciesController < ApplicationController
     else
       render 'new'
     end
-      
+       
   end
 end

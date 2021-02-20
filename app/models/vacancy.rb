@@ -1,4 +1,5 @@
 class Vacancy < ApplicationRecord
+  validates :company, :role, :description, :requirements, :localization, :expiration_date, presence: true
     
   enum status: { active: 0, inactive: 5 }
 

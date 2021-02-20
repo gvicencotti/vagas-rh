@@ -31,37 +31,5 @@ feature 'Admin registers new vacancy' do
     expect(page).to have_content('Santo Antonio de Posse - SP')
     expect(page).to have_content('31/03/2021')
     expect(page).to have_link('Voltar')
-  end
-
-  scenario 'and attributes can´t be blank' do    
-    visit root_path
-    click_on 'Vagas'
-    click_on 'Cadastrar nova vaga'
-    fill_in 'Empresa', with: ''
-    fill_in 'Cargo', with: ''
-    fill_in 'Descrição', with: ''
-    fill_in 'Requisitos', with: ''
-    fill_in 'Localização', with: ''
-    fill_in 'Data de expiração', with: ''
-    click_on 'Criar vaga'
-
-    expect(page).to have_content('Não foi possível cadastrar a vaga')
-    expect(page).to have_content('Não permitido campos em branco', count: 5)
-  end
-
-  scenario 'and code must be unique' do
-    Vacancy.create!(company: 'Batatinha Feliz', role: 'Analista de Gestão de Riscos Pl',
-                    description: 'Elaborar Matriz de Riscos e Controles Internos', 
-                    requirements: 'Superior completo em Contabilidade e experiência anterior',
-                    localization: 'Santo Antonio de Posse - SP', expiration_date: '31/03/2021')
-    
-    visit root_path
-    click_on 'Vagas'
-    click_on 'Cadastrar nova vaga'
-    fill_in 'Empresa', with: 'Batatinha Feliz'
-    click_on 'Criar vaga'
-
-    expect(page).to have_content('Deve ser único')
-  end
-
+  end  
 end
