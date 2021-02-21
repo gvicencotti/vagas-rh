@@ -9,7 +9,7 @@ feature 'Visitor visit home page' do
     expect(page).to have_content('Bem vindo ao maior site de vagas de emprego do Brasil!')
   end
 
-  scenario 'and search for book' do
+  scenario 'and search for vacancy' do
     Vacancy.create!(company: 'Batatinha Feliz', role: 'Analista de Gestão de Riscos Pl',
                     description: 'Elaborar Matriz de Riscos e Controles Internos', 
                     requirements: 'Superior completo em Contabilidade e experiência anterior',

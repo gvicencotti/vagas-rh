@@ -22,6 +22,24 @@ class VacanciesController < ApplicationController
     else
       render 'new'
     end
-       
   end
+  
+  def edit
+    @vacancy = Vacancy.find(params[:id])
+  end
+
+  def update
+    @vacancy = Vacancy.find(params[:id])
+    
+    vacancy_params = params.require(:vacancy).permit(:company, :role, :description,
+    :requirements, :localization, :expiration_date)
+
+    if @vacancy.update(vacancy_params)
+      redirect_to @vacancy
+    else
+      render :edit
+    end
+    
+  end
+       
 end

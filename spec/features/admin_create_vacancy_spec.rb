@@ -31,5 +31,5 @@ feature 'Admin registers new vacancy' do
     expect(page).to have_content('Santo Antonio de Posse - SP')
     expect(page).to have_content('31/03/2021')
     expect(page).to have_link('Voltar')
-  end  
+  end
 end

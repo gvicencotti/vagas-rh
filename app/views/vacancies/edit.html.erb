@@ -1,7 +1,6 @@
-<h1>Nova Vaga</h1>
 <% if @vacancy.errors.any? %>
   <div class="alert">
-    <p>Não foi possível cadastrar a vaga</p>
+    <p>Não foi possível editar a vaga</p>
     <p>Veja erros abaixo:</p>
     <ul>
     <% @vacancy.errors.full_messages.each do |v| %>
@@ -12,3 +11,5 @@
 <% end %>
 
 <%= render 'partials/vacancies/form' %>
+  
+

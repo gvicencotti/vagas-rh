@@ -8,7 +8,7 @@
   <dt><h4>Localização</h4></dt>
   <dd><%= @vacancy.localization %></dd>
   <dt><h4>Data de Expiração</h4></dt> 
-  <dd><%= @vacancy.expiration_date.strftime("%d/%m/%Y") %></dd>
+  <dd><%= I18n.localize @vacancy.expiration_date %></dd>
 </dl>
 
 <%= link_to 'Voltar', vacancies_path %>
