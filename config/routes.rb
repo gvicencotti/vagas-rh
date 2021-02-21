@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_for :users
   
   get 'search', to:"home#search"
-  resources :vacancies, only: %i[index show new create edit update]
+  resources :vacancies, only: %i[index show new create edit update destroy]
+  
 
 end

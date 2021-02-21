@@ -39,7 +39,12 @@ class VacanciesController < ApplicationController
     else
       render :edit
     end
-    
+  end    
+
+  def destroy
+    @vacancy = Vacancy.find(params[:id])
+    @vacancy.destroy
+
+    redirect_to @vacancy, :notice => 'Vaga deletada com sucesso!'
   end
-       
 end

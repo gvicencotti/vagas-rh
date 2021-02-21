@@ -1,3 +1,7 @@
+<%= link_to 'Voltar', vacancy_path %>
+
+<h2>Editar Promoção <%= @vacancy.company %></h2>
+
 <% if @vacancy.errors.any? %>
   <div class="alert">
     <p>Não foi possível editar a vaga</p>
@@ -11,5 +15,4 @@
 <% end %>
 
 <%= render 'partials/vacancies/form' %>
-  
 

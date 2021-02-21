@@ -8,7 +8,10 @@
       <dt><h4>Cargo</h4></dt>
       <dd><%= vacancy.role %></dd>
     </dl>
-    <%= link_to 'Editar', edit_vacancy_path(vacancy) %>
+    <ul>
+      <li><%= link_to 'Editar', edit_vacancy_path(vacancy) %></li>
+      <li><%= link_to 'Deletar', vacancy_path(vacancy), method: :delete, data: { confirm: "Tem certeza que deseja deletar a vaga?" } %></li>
+    </ul>
     <hr>
   <% end %>
 <% end %>

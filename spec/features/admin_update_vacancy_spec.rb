@@ -44,12 +44,7 @@ feature 'Admin update vacancy' do
     fill_in 'Localização', with: 'Santo Antonio de Posse - SP'
     fill_in 'Data de expiração', with: '31/04/2021'
     click_on 'Salvar'
-
-    expect(page).to have_content('Batatinha Feliz')
-    expect(page).to have_content('Contador')
-    expect(page).to have_content('Confeccionar demonstrações financeiras')
-    expect(page).to have_content('Superior completo em Contabilidade')
-    expect(page).to have_content('Santo Antonio de Posse - SP')
-    expect(page).to have_content('31/04/2021')
+    
+    expect(current_path).to eq vacancy_path(vacancy)
   end
 end
