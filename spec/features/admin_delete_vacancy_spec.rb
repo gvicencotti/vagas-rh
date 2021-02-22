@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'Admin delete a promotion' do
 
-  pending scenario 'sucessfully' do
+  scenario 'sucessfully' do
     vacancy = Vacancy.create!(company: 'Batatinha Feliz', role: 'Analista de Gestão de Riscos Pl',
                               description: 'Elaborar Matriz de Riscos e Controles Internos', 
                               requirements: 'Superior completo em Contabilidade e experiência anterior',
@@ -10,9 +10,10 @@ feature 'Admin delete a promotion' do
     
     visit root_path
     click_on 'Vagas'
+    click_on vacancy.company
     click_on 'Deletar'
     
-    expect(current_path).to eq vacancy_path
+    expect(page).not_to have_content('Batatinha Feliz')
     expect(page).to have_content('Vaga deletada com sucesso!')
   end
 end

@@ -10,6 +10,7 @@ feature 'Admin update vacancy' do
 
     visit root_path
     click_on 'Vagas'
+    click_on vacancy.company
     click_on 'Editar'
     fill_in 'Empresa', with: ''
     fill_in 'Cargo', with: ''
@@ -36,7 +37,10 @@ feature 'Admin update vacancy' do
                               requirements: 'Superior completo em Contabilidade e experiência anterior',
                               localization: 'Santo Antonio de Posse - SP', expiration_date: '31/03/2021')
 
-    visit edit_vacancy_path(vacancy)
+    visit root_path
+    click_on 'Vagas'
+    click_on vacancy.company
+    click_on 'Editar'
     fill_in 'Empresa', with: 'Batatinha Feliz'
     fill_in 'Cargo', with: 'Contador'
     fill_in 'Descrição', with: 'Confeccionar demonstrações financeiras'
@@ -46,5 +50,6 @@ feature 'Admin update vacancy' do
     click_on 'Salvar'
     
     expect(current_path).to eq vacancy_path(vacancy)
+    expect(page).to have_content('Batatinha Feliz')
   end
 end
