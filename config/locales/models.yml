@@ -11,6 +11,10 @@ pt-BR:
       user:
         email: E-mail
         password: Senha
+        complete_name: Nome completo
+        cpf: CPF
+        phone_number: Telefone
+        biography: Biografia
       vacancy:
         company: "Empresa"
         role: "Cargo"
