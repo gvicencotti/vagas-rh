@@ -8,6 +8,11 @@ Rails.application.routes.draw do
   end
   
   get 'search', to:"home#search"
-  resources :vacancies, only: %i[index show new create edit update destroy]
+  
+  authenticate :user do
+    resources :vacancies, only: %i[new create edit update destroy]
+  end
+
+  resources :vacancies, only: %i[index show]
 
 end
