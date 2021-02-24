@@ -48,4 +48,10 @@ feature 'Visitor visit home page' do
     expect(page).to have_content('Santo Antonio de Posse - SP')
     expect(page).to have_content('31/03/2021')
   end
+
+  scenario 'and does not see profile button if not signed in' do
+    visit root_path
+
+    expect(page).to_not have_content('Perfil')
+  end
 end

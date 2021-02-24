@@ -23,7 +23,8 @@ feature 'Visitor complete registration' do
 
     login_as(user, :scope => :user)
     visit root_path
-    click_on 'Editar perfil' 
+    click_on 'Perfil' 
+    click_on 'Editar perfil'
     fill_in 'Nome completo', with: 'Gustavo Vicencotti'
     fill_in 'CPF', with: '12345678910'
     fill_in 'Telefone', with: '(99)9999-9999'
@@ -39,11 +40,12 @@ feature 'Visitor complete registration' do
 
   scenario 'attributes cannot be blank' do
     user = User.create!(email: 'gustavo@email.com', password: '123456', complete_name: 'Gustavo Vicencotti',
-      cpf: '12345678910', phone_number: '(99)9999-9999',
-      biography: 'Superior completo em contabilidade experiência anterior')
+                        cpf: '12345678910', phone_number: '(99)9999-9999',
+                        biography: 'Superior completo em contabilidade experiência anterior')
     
     login_as(user, :scope => :user)
     visit root_path 
+    click_on 'Perfil'
     click_on 'Editar perfil' 
     fill_in 'Nome completo', with: ''
     fill_in 'CPF', with: ''
@@ -55,5 +57,18 @@ feature 'Visitor complete registration' do
     expect(page).to have_content('CPF não pode ficar em branco')
     expect(page).to have_content('Telefone não pode ficar em branco')
     expect(page).to have_content('Biografia não pode ficar em branco')
+  end
+
+  scenario 'and cancel user' do
+    user = User.create!(email: 'gustavo@email.com', password: '123456')
+
+    login_as(user, :scope => :user)
+    visit root_path
+    click_on 'Perfil'
+    click_on 'Editar perfil'
+    click_on 'Cancelar minha conta'
+
+    expect(current_path).to eq current_path
+    expect(page).to have_content('Adeus! A sua conta foi cancelada com sucesso. Esperamos vê-lo novamente em breve.')  
   end
 end

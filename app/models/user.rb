@@ -3,5 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  
   validates :complete_name, :cpf, :phone_number, :biography, presence: true, on: :update
+
+  enum role: { User: 0, Admin: 5 }
 end
