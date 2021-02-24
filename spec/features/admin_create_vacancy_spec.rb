@@ -10,6 +10,9 @@ feature 'Admin registers new vacancy' do
   end
 
   scenario 'succesfully' do
+    user = User.create!(email: 'gustavo@email.com', password: '123456')
+    
+    login_as(user, :scope => :user)
     visit root_path
     click_on 'Vagas'
     click_on 'Cadastrar nova vaga'

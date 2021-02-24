@@ -2,12 +2,12 @@ require 'rails_helper'
 
 feature 'Visitor complete registration' do
   scenario 'must be signed in' do
-    user = User.create!(email: 'gustavo@gmail.com', password: '123456')
+    user = User.create!(email: 'gustavo@email.com', password: '123456')
 
     visit root_path
     click_on 'Entrar'
     within('form') do
-      fill_in 'E-mail', with: 'gustavo@gmail.com'
+      fill_in 'E-mail', with: 'gustavo@email.com'
       fill_in 'Senha', with: '123456'
       click_on 'Entrar'
     end
@@ -17,7 +17,7 @@ feature 'Visitor complete registration' do
   end
 
   scenario 'successfully' do
-    user = User.create!(email: 'gustavo@gmail.com', password: '123456', complete_name: 'Gustavo Vicencotti',
+    user = User.create!(email: 'gustavo@email.com', password: '123456', complete_name: 'Gustavo Vicencotti',
                         cpf: '12345678910', phone_number: '(99)9999-9999',
                         biography: 'Superior completo em contabilidade experiência anterior')
 
@@ -38,7 +38,7 @@ feature 'Visitor complete registration' do
   end
 
   scenario 'attributes cannot be blank' do
-    user = User.create!(email: 'gustavo@gmail.com', password: '123456', complete_name: 'Gustavo Vicencotti',
+    user = User.create!(email: 'gustavo@email.com', password: '123456', complete_name: 'Gustavo Vicencotti',
       cpf: '12345678910', phone_number: '(99)9999-9999',
       biography: 'Superior completo em contabilidade experiência anterior')
     

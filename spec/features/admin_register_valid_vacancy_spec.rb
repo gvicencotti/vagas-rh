@@ -1,7 +1,10 @@
 require 'rails_helper'
 
 feature 'Admin registers a valid vacancy' do
-  scenario 'and attributes can´t be blank' do    
+  scenario 'and attributes can´t be blank' do  
+    user = User.create!(email: 'gvicencotti@email.com', password: '123456')
+    
+    login_as(user, :scope => :user)
     visit root_path
     click_on 'Vagas'
     click_on 'Cadastrar nova vaga'
