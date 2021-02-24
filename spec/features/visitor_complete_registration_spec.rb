@@ -1,23 +1,59 @@
-# require 'rails_helper'
+require 'rails_helper'
 
-# feature 'Visitor complete registration' do
-#   scenario 'must be signed in' do
-#     visit root_path
-#     click_on 'Vagas'
+feature 'Visitor complete registration' do
+  scenario 'must be signed in' do
+    user = User.create!(email: 'gustavo@gmail.com', password: '123456')
 
-#     expect(current_path).to eq(new_user_session_path)
-#   end
-
-#   scenario 'successfully' do
-#     user = User.create!(email: 'gustavo@gmail.com', password: '123456')
-#     vacancy = Vacancy.create!(company: 'Batatinha Feliz', role: 'Analista de Gestão de Riscos Pl',
-#                               description: 'Elaborar Matriz de Riscos e Controles Internos', 
-#                               requirements: 'Superior completo em Contabilidade e experiência anterior',
-#                               localization: 'Santo Antonio de Posse - SP', expiration_date: '31/03/2021')
-
-#     login_as user, scope: user
-#     visit root_path
-#     click_on 'Completar cadastro'
-
+    visit root_path
+    click_on 'Entrar'
+    within('form') do
+      fill_in 'E-mail', with: 'gustavo@gmail.com'
+      fill_in 'Senha', with: '123456'
+      click_on 'Entrar'
+    end
     
-#   end
+    expect(page).to have_content('Login efetuado com sucesso.')
+    expect(page).to have_content(user.email)
+  end
+
+  scenario 'successfully' do
+    user = User.create!(email: 'gustavo@gmail.com', password: '123456', complete_name: 'Gustavo Vicencotti',
+                        cpf: '12345678910', phone_number: '(99)9999-9999',
+                        biography: 'Superior completo em contabilidade experiência anterior')
+
+    login_as(user, :scope => :user)
+    visit root_path
+    click_on 'Editar perfil' 
+    fill_in 'Nome completo', with: 'Gustavo Vicencotti'
+    fill_in 'CPF', with: '12345678910'
+    fill_in 'Telefone', with: '(99)9999-9999'
+    fill_in 'Biografia', with: 'Superior completo em contabilidade experiência anterior'
+    click_on 'Atualizar'
+      
+    expect(current_path).to eq user_path
+    expect(page).to have_content('Gustavo Vicencotti')
+    expect(page).to have_content('12345678910')
+    expect(page).to have_content('(99)9999-9999')
+    expect(page).to have_content('Superior completo em contabilidade experiência anterior')
+  end
+
+  scenario 'attributes cannot be blank' do
+    user = User.create!(email: 'gustavo@gmail.com', password: '123456', complete_name: 'Gustavo Vicencotti',
+      cpf: '12345678910', phone_number: '(99)9999-9999',
+      biography: 'Superior completo em contabilidade experiência anterior')
+    
+    login_as(user, :scope => :user)
+    visit root_path 
+    click_on 'Editar perfil' 
+    fill_in 'Nome completo', with: ''
+    fill_in 'CPF', with: ''
+    fill_in 'Telefone', with: ''
+    fill_in 'Biografia', with: ''
+    click_on 'Atualizar'
+
+    expect(page).to have_content('Nome completo não pode ficar em branco')
+    expect(page).to have_content('CPF não pode ficar em branco')
+    expect(page).to have_content('Telefone não pode ficar em branco')
+    expect(page).to have_content('Biografia não pode ficar em branco')
+  end
+end

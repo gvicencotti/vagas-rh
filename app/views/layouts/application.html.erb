@@ -12,6 +12,7 @@
 
   <body>
     <nav>
+      <%= link_to 'Home', root_path %></br>
       <% if user_signed_in? %>
         <%= current_user.email %>
         <%= link_to 'Sair', destroy_user_session_path, method: :delete %>
