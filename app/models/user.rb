@@ -6,5 +6,5 @@ class User < ApplicationRecord
   
   validates :complete_name, :cpf, :phone_number, :biography, presence: true, on: :update
 
-  enum role: { User: 0, Admin: 5 }
+  enum role: { Candidate: 0, Admin: 5 }
 end

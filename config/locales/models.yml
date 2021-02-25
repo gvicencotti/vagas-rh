@@ -16,7 +16,7 @@ pt-BR:
         phone_number: Telefone
         biography: Biografia
         user: Candidato
-        admin: Empresa
+        admin: Colaborador
       vacancy:
         company: "Empresa"
         role: "Cargo"
@@ -24,3 +24,10 @@ pt-BR:
         requirements: "Requisitos"
         localization: "Localização"
         expiration_date: "Data de expiração"
+      company:
+        company_name: Nome da empresa
+        city: Cidade
+        district: Bairro
+        cnpj: CNPJ
+        site: Site
+        address: Endereço

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'User sign up' do
+feature 'Candidate sign up' do
   scenario 'see the button to register' do
     visit root_path
     click_on 'Entrar'
@@ -13,7 +13,7 @@ feature 'User sign up' do
     visit root_path
     click_on 'Entrar'
     click_on 'Inscrever-se'
-    choose 'User', option: 'User'
+    choose 'Candidate'
     fill_in 'E-mail', with: ''
     fill_in 'Senha', with: ''
     fill_in 'Confirme sua senha', with: ''
@@ -30,7 +30,7 @@ feature 'User sign up' do
     visit root_path
     click_on 'Entrar'
     click_on 'Inscrever-se'
-    choose 'User', option: 'User' 
+    choose 'Candidate' 
     fill_in 'E-mail', with: 'gustavo@email.com'
     fill_in 'Senha', with: '123456'
     fill_in 'Confirme sua senha', with: '123456'
@@ -45,7 +45,7 @@ feature 'User sign up' do
     visit root_path
     click_on 'Entrar'
     click_on 'Inscrever-se'
-    choose 'User', option: 'User' 
+    choose 'Candidate' 
     fill_in 'E-mail', with: 'gustavo@email.com'
     fill_in 'Senha', with: '123456'
     fill_in 'Senha', with: '654321'
@@ -59,7 +59,7 @@ feature 'User sign up' do
     visit root_path
     click_on 'Entrar'
     click_on 'Inscrever-se'
-    choose 'User', option: 'User' 
+    choose 'Candidate'
     fill_in 'E-mail', with: 'gustavo@email.com'
     fill_in 'Senha', with: '123456'
     fill_in 'Confirme sua senha', with: '123456'

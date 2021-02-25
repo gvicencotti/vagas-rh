@@ -16,4 +16,6 @@ Rails.application.routes.draw do
 
   resources :vacancies, only: %i[index show]
 
+  resources :companies, only: %i[new create show]
+
 end

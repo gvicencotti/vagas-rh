@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'Visitor complete registration' do
+feature 'Candidate complete registration' do
   scenario 'must be signed in' do
     user = User.create!(email: 'gustavo@email.com', password: '123456')
 
