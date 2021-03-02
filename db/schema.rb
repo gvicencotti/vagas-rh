@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_25_221507) do
+ActiveRecord::Schema.define(version: 2021_03_02_212318) do
+
+  create_table "candidatures", force: :cascade do |t|
+    t.string "vacancy_id", null: false
+    t.string "user_id", null: false
+    t.integer "status", default: 0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "companies", force: :cascade do |t|
     t.string "company_name"

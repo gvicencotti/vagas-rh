@@ -16,7 +16,7 @@
   <dd><%= I18n.localize @vacancy.expiration_date %></dd>
 </dl>
 
-<%= form_with model: @application, url: applications_path  do |f| %>
+<%= form_with model: @candidature, url: candidatures_path  do |f| %>
     <%= f.hidden_field :vacancy_id, value: @vacancy.id %>
     <%= f.submit 'Candidatar' %>
 <% end %>
