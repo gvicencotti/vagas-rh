@@ -1,8 +1,9 @@
 <% if user_signed_in? %>
     <%= link_to 'Perfil', user_path %>
+      <% if @user.company_id.nil? %>
+          <%= link_to 'Cadastrar empresa', new_company_path%>
+      <% end %>
 <% end %>
-
-<%= link_to 'Cadastrar empresa', new_company_path%>
 
 <h1>VagasRH</h1>
 <h3> Bem vindo ao maior site de vagas de emprego do Brasil! </h3>
@@ -14,5 +15,3 @@
 <% end %>
 
 <%= link_to 'Vagas', vacancies_path%>
-
-<%= link_to 'Para empresas'%>

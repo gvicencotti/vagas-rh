@@ -12,10 +12,10 @@ Rails.application.routes.draw do
   
   authenticate :user do
     resources :vacancies, only: %i[new create edit update destroy]
+    resources :companies, only: %i[new create show]
+    resources :applications, only: %i[create]
   end
 
   resources :vacancies, only: %i[index show]
-
-  resources :companies, only: %i[new create show]
 
 end

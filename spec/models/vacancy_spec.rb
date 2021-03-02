@@ -13,7 +13,6 @@ describe Vacancy do
 
     vacancy.valid?
 
-    expect(vacancy.errors[:company]).to include('não pode ficar em branco')
     expect(vacancy.errors[:role]).to include('não pode ficar em branco')
     expect(vacancy.errors[:description]).to include('não pode ficar em '\
                                                           'branco')

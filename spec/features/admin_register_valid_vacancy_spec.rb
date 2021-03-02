@@ -18,7 +18,6 @@ feature 'Admin registers a valid vacancy' do
 
     expect(Vacancy.count).to eq 0
     expect(page).to have_content('Não foi possível cadastrar a vaga')
-    expect(page).to have_content('Empresa não pode ficar em branco')
     expect(page).to have_content('Cargo não pode ficar em branco')
     expect(page).to have_content('Descrição não pode ficar em branco')
     expect(page).to have_content('Requisitos não pode ficar em branco')

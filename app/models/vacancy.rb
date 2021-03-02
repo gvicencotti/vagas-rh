@@ -1,5 +1,5 @@
 class Vacancy < ApplicationRecord
-  validates :company, :role, :description, :requirements, :localization, :expiration_date, presence: true
+  validates :role, :description, :requirements, :localization, :expiration_date, presence: true
     
   enum status: { active: 0, inactive: 5 }
 
@@ -7,4 +7,7 @@ class Vacancy < ApplicationRecord
     Vacancy.where(' status = ? AND expiration_date >= ?', 0, Date.today)
   end
 
+  belongs_to :company
+
+  Vacancy.joins(:company)
 end

@@ -10,17 +10,15 @@ feature 'Visitor visit home page' do
   end
 
   scenario 'and search for vacancy' do
-    Vacancy.create!(company: 'Batatinha Feliz', role: 'Analista de Gestão de Riscos Pl',
-                    description: 'Elaborar Matriz de Riscos e Controles Internos', 
+    company = Company.create!(company_name: 'Batatinha Feliz', city: 'Santo Antonio de Posse - SP',
+                              address: 'Rua Dr. Jorge Tibirica, 114', district: 'Centro',
+                              cnpj: '12345678000133', site: 'www.batatinhafeliz.com.br')
+    Vacancy.create!(role: 'Analista de Gestão de Riscos Pl', description: 'Elaborar Matriz de Riscos e Controles Internos', 
                     requirements: 'Superior completo em Contabilidade e experiência anterior',
-                    localization: 'Santo Antonio de Posse - SP', expiration_date: '31/03/2021')
-    Vacancy.create!(company: 'Bife Achatado Empreedimentos', role: 'Cozinheiro A',
-                    description: 'Administração da cozinha e preparo de alimentos',
-                    requirements: 'Superior completo em Gastronomia e experiência anterior',
-                    localization: 'Uberlândia - MG', expiration_date: '31/03/2021')
+                    localization: 'Santo Antonio de Posse - SP', expiration_date: '31/03/2021', company_id: company.id)
 
     visit root_path
-    fill_in 'Busca:', with: 'Batatinha Feliz'
+    fill_in 'Busca:', with: company.company_name
     click_on 'Pesquisar'
 
     expect(current_path).to eq search_path
@@ -30,18 +28,20 @@ feature 'Visitor visit home page' do
   end
 
   scenario 'and view vacancy details' do
-    Vacancy.create!(company: 'Batatinha Feliz', role: 'Analista de Gestão de Riscos Pl',
-                    description: 'Elaborar Matriz de Riscos e Controles Internos', 
-                    requirements: 'Superior completo em Contabilidade e experiência anterior',
-                    localization: 'Santo Antonio de Posse - SP', expiration_date: '31/03/2021')
-    Vacancy.create!(company: 'Bife Achatado Empreedimentos', role: 'Cozinheiro A',
-                    description: 'Administração da cozinha e preparo de alimentos',
-                    requirements: 'Superior completo em Gastronomia e experiência anterior',
-                    localization: 'Uberlândia - MG', expiration_date: '31/03/2021')
-
+    company = Company.create!(company_name: 'Batatinha Feliz', city: 'Santo Antonio de Posse - SP',
+                              address: 'Rua Dr. Jorge Tibirica, 114', district: 'Centro',
+                              cnpj: '12345678000133', site: 'www.batatinhafeliz.com.br')
+    
+    user = User.create!(email: 'gvicencotti@email.com', password: '123456', company_id: company.id)
+    vacancy = Vacancy.create!(role: 'Analista de Gestão de Riscos Pl',
+                              description: 'Elaborar Matriz de Riscos e Controles Internos', 
+                              requirements: 'Superior completo em Contabilidade e experiência anterior',
+                              localization: 'Santo Antonio de Posse - SP', expiration_date: '31/03/2021', company_id: company.id)
+    
+    login_as(user, :scope => :user)
     visit root_path
-    click_on 'Pesquisar'
-    click_on 'Batatinha Feliz'
+    click_on 'Vagas'
+    click_on vacancy.company.company_name
     
     expect(page).to have_content('Elaborar Matriz de Riscos e Controles Internos')
     expect(page).to have_content('Superior completo em Contabilidade e experiência anterior')

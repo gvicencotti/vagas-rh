@@ -4,7 +4,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   
-  validates :complete_name, :cpf, :phone_number, :biography, presence: true, on: :update
-
   enum role: { Candidate: 0, Admin: 5 }
+
+  validates :complete_name, :cpf, :phone_number, :biography, presence: true, on: :update
+  #belongs_to :company
+   
+  def company
+    User.joins(:company)
+  end
+
 end

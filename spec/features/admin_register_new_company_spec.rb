@@ -2,11 +2,9 @@ require 'rails_helper'
 
 feature 'admin register new company' do
   scenario 'successfully' do
-    Company.create!(company_name: 'Batatinha Feliz', city: 'Santo Antonio de Posse - SP',
-                    address: 'Rua Dr. Jorge Tibirica, 114', district: 'Centro',
-                    cnpj: '12345678000133', site: 'www.batatinhafeliz.com.br')
     user = User.create!(email: 'gustavo@batatinhafeliz.com', password: '123456', role: 5)
 
+    login_as(user, :scope => :user)
     visit root_path
     click_on 'Cadastrar empresa'
     fill_in 'Nome da empresa', with: 'Batatinha Feliz'
@@ -25,11 +23,27 @@ feature 'admin register new company' do
     expect(page).to have_content('www.batatinhafeliz.com.br')
   end
 
+  scenario 'and does not see button if company already registered' do
+    company = Company.create!(company_name: 'Batatinha Feliz', city: 'Santo Antonio de Posse - SP',
+                              address: 'Rua Dr. Jorge Tibirica, 114', district: 'Centro',
+                              cnpj: '12345678000133', site: 'www.batatinhafeliz.com.br')
+    user = User.create!(email: 'gustavo@batatinhafeliz.com', password: '123456', role: 5,
+                        company_id: company.id)
+    
+
+    login_as(user, :scope => :user)
+    visit root_path
+
+    expect(page).to_not have_link('Cadastrar empresa')                  
+  end
+
   scenario 'and attributes can´t be blank' do
     Company.create!(company_name: 'Batatinha Feliz', city: 'Santo Antonio de Posse - SP',
                     address: 'Rua Dr. Jorge Tibirica, 114', district: 'Centro',
                     cnpj: '12345678000133', site: 'www.batatinhafeliz.com.br')
+    user = User.create!(email: 'gustavo@batatinhafeliz.com', password: '123456', role: 5)
     
+    login_as(user, :scope => :user)
     visit root_path
     click_on 'Cadastrar empresa'
     fill_in 'Nome da empresa', with: ''
@@ -47,7 +61,5 @@ feature 'admin register new company' do
     expect(page).to have_content('Bairro não pode ficar em branco')
     expect(page).to have_content('CNPJ não pode ficar em branco')
     expect(page).to have_content('Site não pode ficar em branco')
-
-
   end
 end

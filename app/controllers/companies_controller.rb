@@ -9,6 +9,9 @@ class CompaniesController < ActionController::Base
     @company = Company.new(company_params)
 
     if @company.save
+      user = User.find(current_user.id)
+      user.company_id = @company.id
+      user.save
       redirect_to @company
     else
       render 'new'

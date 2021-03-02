@@ -10,14 +10,15 @@ feature 'Admin registers new vacancy' do
   end
 
   scenario 'succesfully' do
-    user = User.create!(email: 'gustavo@email.com', password: '123456')
+    company = Company.create!(company_name: 'Batatinha Feliz', city: 'Santo Antonio de Posse - SP',
+                              address: 'Rua Dr. Jorge Tibirica, 114', district: 'Centro',
+                              cnpj: '12345678000133', site: 'www.batatinhafeliz.com.br')
+    user = User.create!(email: 'gustavo@email.com', password: '123456', company_id: company.id)
     
     login_as(user, :scope => :user)
     visit root_path
     click_on 'Vagas'
     click_on 'Cadastrar nova vaga'
-
-    fill_in 'Empresa', with: 'Batatinha Feliz'
     fill_in 'Cargo', with: 'Analista de Gestão de Riscos Pl'
     fill_in 'Descrição', with: 'Elaborar Matriz de Riscos e Controles Internos'
     fill_in 'Requisitos', with: 'Superior completo em Contabilidade e experiência anterior'

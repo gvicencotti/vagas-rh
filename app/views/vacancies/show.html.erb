@@ -3,7 +3,7 @@
       <li><%= link_to 'Deletar', vacancy_path(@vacancy), method: :delete, data: { confirm: "Tem certeza que deseja deletar a vaga?" } %></li>
 </ul>
 
-<h1>Vaga de <%= @vacancy.role %> em <%= @vacancy.company %></h1>
+<h1>Vaga de <%= @vacancy.role %> em <%= @vacancy.company.company_name %></h1>
 
 <dl>
   <dt><h4>Descrição</h4></dt>
@@ -14,8 +14,11 @@
   <dd><%= @vacancy.localization %></dd>
   <dt><h4>Data de Expiração</h4></dt> 
   <dd><%= I18n.localize @vacancy.expiration_date %></dd>
-
-  <%= link_to 'Candidatar'%>
 </dl>
+
+<%= form_with model: @application, url: applications_path  do |f| %>
+    <%= f.hidden_field :vacancy_id, value: @vacancy.id %>
+    <%= f.submit 'Candidatar' %>
+<% end %>
 
 <%= link_to 'Voltar', vacancies_path %>
