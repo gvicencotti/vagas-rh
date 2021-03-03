@@ -10,7 +10,7 @@ feature 'Candidate apply for vacancy' do
                               requirements: 'Superior completo em Contabilidade e experiência anterior',
                               localization: 'Santo Antonio de Posse - SP', expiration_date: '31/03/2021', company: company)
     
-    login_as(user, :scope => :user)
+    login_as(user, :role => :Candidato)
     visit root_path
     click_on 'Vagas'
     click_on vacancy.company.company_name

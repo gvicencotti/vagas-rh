@@ -15,8 +15,8 @@ pt-BR:
         cpf: CPF
         phone_number: Telefone
         biography: Biografia
-        user: Candidato
-        admin: Colaborador
+        Candidate: Candidato
+        Admin: Admin
       vacancy:
         company: "Empresa"
         role: "Cargo"

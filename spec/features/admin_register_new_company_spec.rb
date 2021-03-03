@@ -31,7 +31,7 @@ feature 'admin register new company' do
                         company_id: company.id)
     
 
-    login_as(user, :scope => :user)
+    login_as(user, :role => :Admin)
     visit root_path
 
     expect(page).to_not have_link('Cadastrar empresa')                  
@@ -43,7 +43,7 @@ feature 'admin register new company' do
                     cnpj: '12345678000133', site: 'www.batatinhafeliz.com.br')
     user = User.create!(email: 'gustavo@batatinhafeliz.com', password: '123456', role: 5)
     
-    login_as(user, :scope => :user)
+    login_as(user, :role => :Admin)
     visit root_path
     click_on 'Cadastrar empresa'
     fill_in 'Nome da empresa', with: ''

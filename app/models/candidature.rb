@@ -1,4 +1,5 @@
 class Candidature < ApplicationRecord
+  belongs_to :vacancy
 
-  enum status: { Pendente: 0, Recusado: 5, Aceito: 10 }
+  enum candidature_status: { pendente: 1, recusado: 2, aceito: 3 }
 end

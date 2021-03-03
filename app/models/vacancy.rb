@@ -8,6 +8,8 @@ class Vacancy < ApplicationRecord
   end
 
   belongs_to :company
+  has_many :candidature
 
   Vacancy.joins(:company)
+  Vacancy.joins(:candidature)
 end

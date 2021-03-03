@@ -15,7 +15,7 @@ feature 'Admin registers new vacancy' do
                               cnpj: '12345678000133', site: 'www.batatinhafeliz.com.br')
     user = User.create!(email: 'gustavo@email.com', password: '123456', company_id: company.id)
     
-    login_as(user, :scope => :user)
+    login_as(user, :role => :Admin)
     visit root_path
     click_on 'Vagas'
     click_on 'Cadastrar nova vaga'

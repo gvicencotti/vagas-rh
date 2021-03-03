@@ -7,8 +7,13 @@
       <dd><%= link_to vacancy.company.company_name, vacancy %></dd>
       <dt><h4>Cargo</h4></dt>
       <dd><%= vacancy.role %></dd>
+      <% if user_signed_in? %>
+        <dd>Número de candidaturas:<%= vacancy.candidature.count %></dd>
+      <% end %>
     </dl>
     <hr>
+    
+</dl>  
   <% end %>
 <% end %>
 

@@ -11,5 +11,9 @@ class CandidaturesController < ActionController::Base
     end
   end
 
+  def show
+    @candidature = Candidature.find(params[:id])
+  end
+
 end
   

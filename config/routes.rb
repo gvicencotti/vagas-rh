@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   authenticate :user do
     resources :vacancies, only: %i[new create edit update destroy]
     resources :companies, only: %i[new create show]
-    resources :candidatures, only: %i[create]
+    resources :candidatures, only: %i[create show]
   end
 
   resources :vacancies, only: %i[index show]
