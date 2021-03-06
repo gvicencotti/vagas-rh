@@ -1,9 +1,5 @@
 <%= form_with model: @vacancy do |f| %>
-  
-  <div>
-    <%= f.label :company %>
-    <%= f.text_field :company %>
-  </div>
+
   <div>
     <%= f.label :role %>
     <%= f.text_field :role %>
@@ -30,6 +26,6 @@
   <% else %>
     <%= render 'components/edit_button', f: f %>
   <% end %>
-
   
 <% end %>
+

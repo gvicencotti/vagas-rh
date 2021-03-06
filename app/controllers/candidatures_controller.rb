@@ -12,7 +12,8 @@ class CandidaturesController < ActionController::Base
   end
 
   def show
-    @candidature = Candidature.find(params[:id])
+    @vacancy_id = params[:id]
+    @candidature = Candidature.where(' vacancy_id = ?', @vacancy_id )
   end
 
 end

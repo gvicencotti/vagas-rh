@@ -49,7 +49,6 @@ feature 'Admin update vacancy' do
     click_on 'Vagas'
     click_on vacancy.company.company_name
     click_on 'Editar'
-    fill_in 'Empresa', with: 'Batatinha Feliz'
     fill_in 'Cargo', with: 'Contador'
     fill_in 'Descrição', with: 'Confeccionar demonstrações financeiras'
     fill_in 'Requisitos', with: 'Superior completo em Contabilidade'
@@ -59,5 +58,5 @@ feature 'Admin update vacancy' do
     
     expect(current_path).to eq vacancy_path(vacancy)
     expect(page).to have_content('Batatinha Feliz')
-  end
+    end
 end

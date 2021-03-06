@@ -62,7 +62,7 @@ feature 'Candidate complete registration' do
   scenario 'and cancel user' do
     user = User.create!(email: 'gustavo@email.com', password: '123456')
 
-    login_as(user, :role => :Candidato)
+    login_as(user, :role => :Candidate)
     visit root_path
     click_on 'Perfil'
     click_on 'Editar perfil'

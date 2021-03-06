@@ -10,14 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_02_212318) do
+ActiveRecord::Schema.define(version: 2021_03_05_162158) do
 
   create_table "candidatures", force: :cascade do |t|
-    t.string "vacancy_id", null: false
-    t.string "user_id", null: false
     t.integer "status", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id", null: false
+    t.integer "vacancy_id", null: false
+    t.index ["user_id"], name: "index_candidatures_on_user_id"
+    t.index ["vacancy_id"], name: "index_candidatures_on_vacancy_id"
   end
 
   create_table "companies", force: :cascade do |t|
@@ -63,6 +65,8 @@ ActiveRecord::Schema.define(version: 2021_03_02_212318) do
     t.index ["company_id"], name: "index_vacancies_on_company_id"
   end
 
+  add_foreign_key "candidatures", "users"
+  add_foreign_key "candidatures", "vacancies"
   add_foreign_key "users", "companies"
   add_foreign_key "vacancies", "companies"
 end

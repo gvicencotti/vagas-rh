@@ -16,7 +16,6 @@ feature 'Candidate sign up' do
     choose 'Candidate'
     fill_in 'E-mail', with: ''
     fill_in 'Senha', with: ''
-    fill_in 'Confirme sua senha', with: ''
     click_on 'Cadastrar'
 
     expect(page).to have_content('E-mail não pode ficar em branco')
@@ -33,26 +32,11 @@ feature 'Candidate sign up' do
     choose 'Candidate' 
     fill_in 'E-mail', with: 'gustavo@email.com'
     fill_in 'Senha', with: '123456'
-    fill_in 'Confirme sua senha', with: '123456'
     click_on 'Cadastrar'
 
     expect(current_path).not_to eq(root_path)
     expect(page).not_to have_content('Login efetuado com sucesso.')
     expect(page).to have_content('E-mail já está em uso')
-  end
-
-  scenario 'password and password confirmation must be equal' do
-    visit root_path
-    click_on 'Entrar'
-    click_on 'Inscrever-se'
-    choose 'Candidate' 
-    fill_in 'E-mail', with: 'gustavo@email.com'
-    fill_in 'Senha', with: '123456'
-    fill_in 'Senha', with: '654321'
-    click_on 'Cadastrar'
-
-    expect(current_path).not_to eq(root_path)
-    expect(page).to have_content('Confirme sua senha não é igual a Senha')
   end
 
   scenario 'successfully' do
@@ -62,11 +46,10 @@ feature 'Candidate sign up' do
     choose 'Candidate'
     fill_in 'E-mail', with: 'gustavo@email.com'
     fill_in 'Senha', with: '123456'
-    fill_in 'Confirme sua senha', with: '123456'
     click_on 'Cadastrar'
 
     expect(current_path).to eq(root_path)
-    expect(page).to have_content('Bem vindo! Você realizou seu registro com sucesso')
+    expect(page).to have_content('gustavo@email.com')
     expect(page).to have_link('Sair')
   end
 

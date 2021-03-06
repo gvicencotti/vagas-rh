@@ -1,6 +1,8 @@
+<h1>Informações da empresa</h1>
+
 <dl>
   <dt><h4>Empresa</h4></dd>
-  <dt><h4><%= @company.company_name %>  </h4></dd>
+  <dd><%= @company.company_name %></dd>
   <dt><h4>Cidade</h4></dt>
   <dd><%= @company.city %></dd>
   <dt><h4>Endereço</h4></dt>
@@ -12,3 +14,5 @@
   <dt><h4>Site</h4></dt> 
   <dd><%= @company.site %></dd>
 </dl>
+
+<%= link_to 'Voltar para home', root_path %>

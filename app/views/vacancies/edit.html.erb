@@ -1,6 +1,6 @@
 <%= link_to 'Voltar', vacancy_path %>
 
-<h2>Editar Vaga <%= @vacancy.company %></h2>
+<h2>Editar Vaga <%= @vacancy.company.company_name %></h2>
 
 <% if @vacancy.errors.any? %>
   <div class="alert">

@@ -1,6 +1,16 @@
 class CompaniesController < ActionController::Base
   def new
-    @company = Company.new
+    user = User.find(current_user.id)
+      if user.cpf.nil?
+        redirect_to edit_user_registration_path(current_user.id)
+        flash[:notice] = 'Necessário preencher o perfil antes de cadastrar nova empresa.'
+      end
+    
+      if user.company_id.nil?
+        @company = Company.new
+      else
+        redirect_to company_path(user.company_id)
+      end
   end
 
   def create
@@ -10,8 +20,7 @@ class CompaniesController < ActionController::Base
 
     if @company.save
       user = User.find(current_user.id)
-      user.company_id = @company.id
-      user.save
+      user.update(company_id: @company.id)
       redirect_to @company
     else
       render 'new'

@@ -1,7 +1,9 @@
 <% if user_signed_in? %>
     <%= link_to 'Perfil', user_path %>
-      <% if @user.company_id.nil? %>
+      <% if @user.company_id.nil? && @user.Admin? %>
           <%= link_to 'Cadastrar empresa', new_company_path%>
+      <% elsif @user.company_id.nil? == false && @user.Admin? %>
+          <%= link_to 'Informações da empresa', company_path(@user.company_id) %>
       <% end %>
 <% end %>
 

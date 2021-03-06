@@ -9,7 +9,14 @@ class VacanciesController < ApplicationController
   end
 
   def show
+    @visible = true
     @vacancy = Vacancy.find(params[:id])
+    if user_signed_in?
+      @user = User.find(current_user.id)
+      if @user.company_id == @vacancy.company_id 
+        @visible = false
+      end
+    end
   end
 
   def new

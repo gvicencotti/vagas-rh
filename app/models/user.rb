@@ -7,6 +7,9 @@ class User < ApplicationRecord
   enum role: { Candidate: 0, Admin: 5 }
 
   validates :complete_name, :cpf, :phone_number, :biography, presence: true, on: :update
+  
+
+  has_one :company
    
   def company
     User.joins(:company)

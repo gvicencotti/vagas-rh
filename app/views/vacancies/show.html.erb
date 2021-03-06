@@ -14,13 +14,19 @@
   <dd><%= @vacancy.localization %></dd>
   <dt><h4>Data de Expiração</h4></dt> 
   <dd><%= I18n.localize @vacancy.expiration_date %></dd>
-  <%= link_to 'Candidaturas', candidature_path(vacancy.candidature.id) %>
   
- 
+  <% if @visible %>
+    <%= form_with model: @candidature, url: candidatures_path  do |f| %>
+        <%= f.hidden_field :vacancy_id, value: @vacancy.id %>
+        <%= f.submit 'Candidatar' %>
+    <% end %>
+  <% end %>
 
-<%= form_with model: @candidature, url: candidatures_path  do |f| %>
-    <%= f.hidden_field :vacancy_id, value: @vacancy.id %>
-    <%= f.submit 'Candidatar' %>
-<% end %>
 
-<%= link_to 'Voltar', vacancies_path %>
+  <% if user_signed_in? %>  
+    <% unless @user.company_id.nil? %>
+      <%= link_to 'Candidaturas', candidature_path(@vacancy.id) %></dd>
+    <% end %>
+  <% end %>
+  <%= link_to 'Voltar', vacancies_path %>
+</dl>

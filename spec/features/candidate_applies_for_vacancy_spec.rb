@@ -10,12 +10,22 @@ feature 'Candidate apply for vacancy' do
                               requirements: 'Superior completo em Contabilidade e experiência anterior',
                               localization: 'Santo Antonio de Posse - SP', expiration_date: '31/03/2021', company: company)
     
-    login_as(user, :role => :Candidato)
+    login_as(user, :role => :Candidate)
     visit root_path
     click_on 'Vagas'
     click_on vacancy.company.company_name
     click_on "Candidatar"
 
     expect(page).to have_content("Candidatura registrada com sucesso!")
+  end
+
+  scenario 'and does not see number of candidatures' do
+    user = User.create!(email: 'gustavo@email.com', password: '123456', role: 0)
+    
+    login_as(user, :role => :Candidate)
+    visit root_path
+    click_on 'Vagas'
+
+    expect(page).not_to have_content('Número de candidaturas:')
   end
 end
