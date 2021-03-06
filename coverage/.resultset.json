@@ -36,6 +36,20 @@
           null
         ]
       },
+      "/home/gvicencotti/vagasrh/app/models/candidature_approval.rb": {
+        "lines": [
+          1,
+          1,
+          null
+        ]
+      },
+      "/home/gvicencotti/vagasrh/app/models/candidature_denial.rb": {
+        "lines": [
+          1,
+          1,
+          null
+        ]
+      },
       "/home/gvicencotti/vagasrh/app/models/candidature.rb": {
         "lines": [
           1,
@@ -68,11 +82,7 @@
           1,
           null,
           1,
-          21,
-          null,
-          null,
-          null,
-          null,
+          24,
           null,
           null,
           1,
@@ -88,8 +98,8 @@
           1,
           null,
           1,
-          51,
-          26,
+          54,
+          30,
           null,
           null,
           null,
@@ -113,26 +123,33 @@
           1,
           null,
           1,
-          21,
+          24,
           null,
-          21,
-          12,
+          24,
+          16,
           null,
           null,
           null,
           1,
-          13,
-          13,
-          13,
-          11,
-          11,
-          8,
+          16,
+          16,
+          16,
+          14,
+          14,
+          9,
           null,
           null,
           null,
           null,
           1,
           2,
+          2,
+          null,
+          2,
+          0,
+          0,
+          null,
+          null,
           null,
           null,
           1,
@@ -181,7 +198,12 @@
           1,
           null,
           1,
-          1,
+          2,
+          2,
+          2,
+          2,
+          null,
+          2,
           1,
           1,
           null,
@@ -590,6 +612,6 @@
         }
       }
     },
-    "timestamp": 1615043318
+    "timestamp": 1615056560
   }
 }

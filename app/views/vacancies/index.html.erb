@@ -17,5 +17,7 @@
   <% end %>
 <% end %>
 
-<%= link_to 'Cadastrar nova vaga', new_vacancy_path %>
+<% if user_signed_in? && @user.company_id.nil? == false && @user.Admin? %>
+  <%= link_to 'Cadastrar nova vaga', new_vacancy_path %>
+<% end %>
 <%= link_to 'Voltar', root_path%>

@@ -2,7 +2,7 @@ class Candidature < ApplicationRecord
   belongs_to :vacancy
   belongs_to :user
 
-  enum candidature_status: { pendente: 1, recusado: 2, aceito: 3 }
+  enum status: { pendent: 0, valued: 5 }
 
   Candidature.joins(:vacancy)
   Candidature.joins(:user)

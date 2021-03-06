@@ -21,6 +21,13 @@ class VacanciesController < ApplicationController
 
   def new
     @vacancy = Vacancy.new
+    user = User.find(current_user.id)
+
+    if user.cpf.nil?
+      redirect_to edit_user_registration_path(current_user.id)
+      flash[:notice] = 'Necessário preencher o perfil e 
+                        cadastrar empresa antes de criar nova vaga.'
+    end
   end
 
   def create

@@ -5,7 +5,9 @@ feature 'Candidate apply for vacancy' do
     company = Company.create!(company_name: 'Batatinha Feliz', city: 'Santo Antonio de Posse - SP',
                               address: 'Rua Dr. Jorge Tibirica, 114', district: 'Centro',
                               cnpj: '12345678000133', site: 'www.batatinhafeliz.com.br')
-    user = User.create!(email: 'gustavo@email.com', password: '123456', role: 0)
+    user = User.create!(email: 'gustavo@email.com', password: '123456', complete_name: 'Gustavo Vicencotti',
+                        cpf: '1234567891011', phone_number: '(99)9999-9999',
+                        biography: 'Superior completo em contabilidade')
     vacancy = Vacancy.create!(role: 'Analista de Gestão de Riscos Pl', description: 'Elaborar Matriz de Riscos e Controles Internos', 
                               requirements: 'Superior completo em Contabilidade e experiência anterior',
                               localization: 'Santo Antonio de Posse - SP', expiration_date: '31/03/2021', company: company)
@@ -27,5 +29,24 @@ feature 'Candidate apply for vacancy' do
     click_on 'Vagas'
 
     expect(page).not_to have_content('Número de candidaturas:')
+  end
+
+  scenario 'can´t candidate if profile incomplete' do
+    company = Company.create!(company_name: 'Batatinha Feliz', city: 'Santo Antonio de Posse - SP',
+                              address: 'Rua Dr. Jorge Tibirica, 114', district: 'Centro',
+                              cnpj: '12345678000133', site: 'www.batatinhafeliz.com.br')
+    user = User.create!(email: 'gustavo@email.com', password: '123456', role: 0)
+    vacancy = Vacancy.create!(role: 'Analista de Gestão de Riscos Pl', description: 'Elaborar Matriz de Riscos e Controles Internos', 
+                            requirements: 'Superior completo em Contabilidade e experiência anterior',
+                            localization: 'Santo Antonio de Posse - SP', expiration_date: '31/03/2021', company_id: company.id)
+
+    login_as(user, :role => :Candidate)
+    visit root_path
+    click_on 'Vagas'
+    click_on vacancy.company.company_name
+    click_on 'Candidatar'
+
+    expect(page).not_to have_content('Candidatura registrada com sucesso!')
+    expect(page).to have_content('Necessário preencher perfil para se cadastrar a vagas.')
   end
 end

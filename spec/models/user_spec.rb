@@ -1,5 +1,19 @@
 require 'rails_helper'
 
-RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe User do
+  it 'attributes cannot be blank' do
+    user = User.new
+
+    expect(user.valid?).to eq false
+    expect(user.errors.count).to eq 2
+  end
+
+  it 'errors messages are in portuguese' do
+    user = User.new
+
+    user.valid?
+
+    expect(user.errors[:email]).to include('não pode ficar em branco')
+    expect(user.errors[:password]).to include('não pode ficar em branco')
+  end
 end

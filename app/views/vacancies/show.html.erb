@@ -1,7 +1,9 @@
-<ul>
-      <li><%= link_to 'Editar', edit_vacancy_path(@vacancy) %></li>
-      <li><%= link_to 'Deletar', vacancy_path(@vacancy), method: :delete, data: { confirm: "Tem certeza que deseja deletar a vaga?" } %></li>
-</ul>
+<% if user_signed_in? && @user.company_id.nil? == false && @user.Admin? %>
+  <ul>
+        <li><%= link_to 'Editar', edit_vacancy_path(@vacancy) %></li>
+        <li><%= link_to 'Deletar', vacancy_path(@vacancy), method: :delete, data: { confirm: "Tem certeza que deseja deletar a vaga?" } %></li>
+  </ul>
+<% end %>
 
 <h1>Vaga de <%= @vacancy.role %> em <%= @vacancy.company.company_name %></h1>
 
