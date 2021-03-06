@@ -5,6 +5,10 @@
       <% elsif @user.company_id.nil? == false && @user.Admin? %>
           <%= link_to 'Informações da empresa', company_path(@user.company_id) %>
       <% end %>
+      
+      <% if @user.Candidate? %>
+          <%= link_to 'Candidaturas', user_candidature_path(@user.id) %>
+      <% end %>
 <% end %>
 
 <h1>VagasRH</h1>

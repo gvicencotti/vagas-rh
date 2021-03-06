@@ -1,25 +1,31 @@
 <h1>Candidaturas</h1>
 
-<% @candidature.each do |c| %>
-  <table>
-    <tr>
-      <td><b>Nome completo:</b></td>
-      <td><%= c.user.complete_name %></td>
-    </tr>
-    <tr>
-      <td><b>CPF:</b></td>
-      <td><%= c.user.cpf %></td>
-    </tr>
-    <tr>
-      <td><b>Telefone:</b></td>
-      <td><%= c.user.phone_number %></td>
-    </tr>
-    <tr>
-      <td><b>Biografia:</b></td>
-      <td><%= c.user.phone_number %></td>
-    </tr>
-  </table>
-  <hr>
+<% if @candidature.empty? %>
+  <td>Nenhuma candidatura recebida até o momento.</td>
+  <br>
+  <br>
+<% else %>
+  <% @candidature.each do |c| %>
+    <table>
+      <tr>
+        <td><b>Nome completo:</b></td>
+        <td><%= c.user.complete_name %></td>
+      </tr>
+      <tr>
+        <td><b>CPF:</b></td>
+        <td><%= c.user.cpf %></td>
+      </tr>
+      <tr>
+        <td><b>Telefone:</b></td>
+        <td><%= c.user.phone_number %></td>
+      </tr>
+      <tr>
+        <td><b>Biografia:</b></td>
+        <td><%= c.user.phone_number %></td>
+      </tr>
+    </table>
+    <hr>
+  <% end %>
 <% end %>
 
 <%= link_to 'Voltar', vacancy_path(@vacancy_id) %>

@@ -1,0 +1,18 @@
+<h1>Lista de candidaturas</h1>
+
+<% @candidature.each do |c| %>
+    <table>
+      <tr>
+        <td><b>Empresa</b></td>
+        <td><%= c.vacancy.company.company_name %></td>
+      </tr>
+      <tr>
+        <td><b>Cargo:</b></td>
+        <td><%= c.vacancy.role %></td>
+      </tr>
+    </table>
+    <hr>
+<% end %>
+
+<%= link_to 'Voltar', root_path %>
+

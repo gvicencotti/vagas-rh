@@ -71,4 +71,25 @@ feature 'Admin sees candidature' do
     expect(page).to have_content('Santo Antonio de Posse - SP')
     expect(page).to have_content('31/03/2021')
   end
+
+  scenario 'and see messages if no candidature received' do
+    company = Company.create!(company_name: 'Batatinha Feliz', city: 'Santo Antonio de Posse - SP',
+      address: 'Rua Dr. Jorge Tibirica, 114', district: 'Centro',
+      cnpj: '12345678000133', site: 'www.batatinhafeliz.com.br') 
+    user = User.create!(email: 'gustavo@email.com', password: '123456', complete_name: 'Gustavo Vicencotti',
+                        cpf: '1234567891011', phone_number: '(99)9999-9999',
+                        biography: 'Superior completo em contabilidade', role: 5, company_id: company.id)
+    vacancy = Vacancy.create!(role: 'Analista de Gestão de Riscos Pl',
+                              description: 'Elaborar Matriz de Riscos e Controles Internos', 
+                              requirements: 'Superior completo em Contabilidade e experiência anterior',
+                              localization: 'Santo Antonio de Posse - SP', expiration_date: '31/03/2021', company_id: company.id)
+  
+    login_as(user, :role => :Admin)
+    visit root_path
+    click_on 'Vagas'
+    click_on vacancy.company.company_name
+    click_on 'Candidaturas'
+
+    expect(page).to have_content('Nenhuma candidatura recebida até o momento.')
+  end
 end
