@@ -23,7 +23,21 @@
         <td><b>Biografia:</b></td>
         <td><%= c.user.phone_number %></td>
       </tr>
+
+      <% if c.status == 'pendent' %>
+        <tr>
+          <td><%= link_to 'Aceitar candidatura', new_candidature_approvals_path(c.id) %></td>
+          <td><%= link_to 'Recusar candidatura', new_candidature_denials_path(c.id) %></td>
+        </tr>
+      <% else %>
+        <tr>
+          <td><b>Status:</b></td>
+          <td><%= c.status %></td>
+        </tr>
+      <% end %>
     </table>
+    
+    
     <hr>
   <% end %>
 <% end %>

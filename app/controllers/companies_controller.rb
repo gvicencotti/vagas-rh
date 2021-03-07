@@ -1,4 +1,4 @@
-class CompaniesController < ActionController::Base
+class CompaniesController < ApplicationController
   def new
     user = User.find(current_user.id)
       if user.cpf.nil?

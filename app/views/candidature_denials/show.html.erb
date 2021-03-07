@@ -1,0 +1,15 @@
+<h1>Feedback da empresa</h1>
+
+
+<% @candidature_denial.each do |c| %>
+    <table>
+      <tr>
+        <td><b>Feedback</b></td>
+        <td><%= c.feedback %></td>
+      </tr>
+      <tr>
+    </table>
+<% end %>
+
+<%= link_to 'Voltar', user_candidature_path(current_user.id)  %>
+    

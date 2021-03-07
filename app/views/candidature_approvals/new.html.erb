@@ -1,0 +1,36 @@
+<h1>Proposta de emprego</h1>
+
+<% if @candidature_approval.errors.any? %>
+  <div class="alert">
+    <p>Não foi possível enviar a proposta</p>
+    <p>Confira os erros abaixo:</p>
+    <ul>
+      <% @candidature_approval.errors.full_messages.each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end%>
+
+<%= form_with model: @candidature_approval do |f| %>
+
+  <%= f.hidden_field :candidature_id, value: @candidature_id %>
+
+  <div>
+    <%= f.label :salarial_proposal %>
+    <%= f.text_field :salarial_proposal %>
+  </div>
+  <div>
+    <%= f.label :start_date %>
+    <%= f.date_field :start_date %>
+  </div>
+
+  <%= f.submit 'Enviar proposta' %>
+  <br>
+<% end %>
+
+<%= link_to 'Voltar', candidature_path(@candidature_id) %>
+
+
+
+ 

@@ -1,0 +1,28 @@
+<h1>Mensagem de recusa</h1>
+
+<% if @candidature_denial.errors.any? %>
+  <div class="alert">
+    <p>Não foi possível enviar o feedback</p>
+    <p>Confira os erros abaixo:</p>
+    <ul>
+      <% @candidature_denial.errors.full_messages.each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end%>
+
+<%= form_with model: @candidature_denial, url: "/candidature_denials"  do |f| %>
+
+  <%= f.hidden_field :candidature_id, value: @candidature_id %>
+
+  <div>
+    <%= f.label :feedback %>
+    <%= f.text_area :feedback %>
+  </div>
+
+  <%= f.submit 'Enviar feedback' %>
+  <br>
+<% end %>
+
+<%= link_to 'Voltar', candidature_path(@candidature_id)%>

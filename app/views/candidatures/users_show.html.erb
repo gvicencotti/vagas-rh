@@ -10,7 +10,16 @@
         <td><b>Cargo:</b></td>
         <td><%= c.vacancy.role %></td>
       </tr>
+      <tr>
+        <td><b>Status:</b></td>
+        <td><%= c.status %></td>
+      </tr>
     </table>
+      <% if c.status == 'approved' %>
+        <%= link_to 'Ver proposta', candidature_approval_path(c.id) %>
+      <% elsif c.status == 'denied' %>
+        <%= link_to 'Ver feedback', candidature_denial_path(c.id) %>
+      <% end %>
     <hr>
 <% end %>
 

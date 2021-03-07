@@ -16,7 +16,7 @@ pt-BR:
         phone_number: Telefone
         biography: Biografia
         Candidate: Candidato
-        Admin: Admin
+        Admin: Administrador
       vacancy:
         role: "Cargo"
         description: "Descrição"
@@ -30,3 +30,13 @@ pt-BR:
         cnpj: CNPJ
         site: Site
         address: Endereço
+      candidature/status:
+        pendent: Pendente
+        approved: Aprovado
+        denied: Recusado
+      candidature_approval:
+        salarial_proposal: Proposta salarial
+        start_date: Data de início
+      candidature_denial:
+        feedback: Feedback
+    

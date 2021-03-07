@@ -83,7 +83,7 @@ feature 'Admin sees candidature' do
                               description: 'Elaborar Matriz de Riscos e Controles Internos', 
                               requirements: 'Superior completo em Contabilidade e experiência anterior',
                               localization: 'Santo Antonio de Posse - SP', expiration_date: '31/03/2021', company_id: company.id)
-  
+
     login_as(user, :role => :Admin)
     visit root_path
     click_on 'Vagas'
@@ -91,5 +91,5 @@ feature 'Admin sees candidature' do
     click_on 'Candidaturas'
 
     expect(page).to have_content('Nenhuma candidatura recebida até o momento.')
-  end
+  end 
 end

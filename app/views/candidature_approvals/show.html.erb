@@ -1,0 +1,28 @@
+<h1>Proposta de emprego</h1>
+
+<% @candidature_approval.each do |c| %>
+  <table>
+    <tr>
+      <td><b>Salário</b></td>
+      <td><%= c.salarial_proposal %></td>
+    </tr>
+    <tr>
+      <td><b>Data de início</b></td>
+      <td><%= c.start_date.strftime('%d/%m/%Y') %></td>
+    </tr>
+  </table>
+
+  <% if c.offer_response == 'pendent'%>
+    <%= link_to 'Aceitar proposta', accept_candidature_approval_path(c.id), method: :post %>
+    <%= link_to 'Recusar proposta', reject_candidature_approval_path(c.id), method: :post %>
+  <% else %>
+    <td><b>Status</b></td>
+    <%= c.offer_response %>
+  <% end %>
+  <br>
+  <br>
+<% end %>
+
+
+
+<%= link_to 'Voltar', user_candidature_path(current_user.id)  %>
