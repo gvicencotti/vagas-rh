@@ -13,7 +13,7 @@ class VacanciesController < ApplicationController
     @vacancy = Vacancy.find(params[:id])
     if user_signed_in?
       @user = User.find(current_user.id)
-      if @user.company_id == @vacancy.company_id 
+      if @user.company_id == @vacancy.company_id
         @visible = false
       end
     end
@@ -34,7 +34,7 @@ class VacanciesController < ApplicationController
     vacancy_params = params.require(:vacancy).permit(:role, :description,
                                     :requirements, :localization, :expiration_date)
     @vacancy = Vacancy.new(vacancy_params)
-   
+    
     user = User.find(current_user.id)
     @vacancy.company_id = user.company_id
 
@@ -44,24 +44,24 @@ class VacanciesController < ApplicationController
       render 'new'
     end
   end
-  
+
   def edit
     @vacancy = Vacancy.find(params[:id])
   end
 
   def update
     @vacancy = Vacancy.find(params[:id])
-    
-    vacancy_params = params.require(:vacancy).permit(:role, :description,
-    :requirements, :localization, :expiration_date)
+      
+    vacancy_params = params.require(:vacancy).permit(:role, :description, 
+      :requirements, :localization, :expiration_date)
 
     if @vacancy.update(vacancy_params)
       redirect_to @vacancy
     else
       render :edit
     end
-  end    
-
+  end
+  
   def destroy
     @vacancy = Vacancy.find(params[:id])
     @vacancy.destroy

@@ -103,6 +103,6 @@ feature 'Visitor view vacancies' do
     expect(page).to have_content('Batatinha Feliz')
     expect(page).to have_content('Analista de Gestão de Riscos Pl')
     expect(page).not_to have_content('Bife Achatado Empreedimentos')
-    expect(page).not_to have_content('Cozinheiro A')  
+    expect(page).not_to have_content('Cozinheiro A')    
   end
 end

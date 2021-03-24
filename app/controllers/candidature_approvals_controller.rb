@@ -5,11 +5,10 @@ class CandidatureApprovalsController < ApplicationController
   end
 
   def create
-    candidature_approval_params = params.require(:candidature_approval).permit(:candidature_id, :salarial_proposal, :start_date)
+    candidature_approval_params = params.require(:candidature_approval).permit(:candidature_id,:salarial_proposal, :start_date)
     @candidature_approval = CandidatureApproval.new(candidature_approval_params)
-
     @candidature_id = @candidature_approval.candidature_id
-
+    
     if @candidature_approval.save
       candidature = Candidature.find(@candidature_id)
       candidature.update(status: 5)
