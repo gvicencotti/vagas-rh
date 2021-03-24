@@ -17,9 +17,8 @@ feature 'Candidate complete registration' do
   end
 
   scenario 'successfully' do
-    user = User.create!(email: 'gustavo@email.com', password: '123456', complete_name: 'Gustavo Vicencotti',
-                        cpf: '12345678910', phone_number: '(99)9999-9999',
-                        biography: 'Superior completo em contabilidade experiência anterior')
+    user = create(:user)
+
 
     login_as(user, :scope => :user)
     visit root_path
@@ -39,9 +38,8 @@ feature 'Candidate complete registration' do
   end
 
   scenario 'attributes cannot be blank' do
-    user = User.create!(email: 'gustavo@email.com', password: '123456', complete_name: 'Gustavo Vicencotti',
-                        cpf: '12345678910', phone_number: '(99)9999-9999',
-                        biography: 'Superior completo em contabilidade experiência anterior')
+    user = create(:user)
+
     
     login_as(user, :scope => :user)
     visit root_path 

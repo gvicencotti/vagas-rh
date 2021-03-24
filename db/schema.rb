@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2021_03_07_191629) do
     t.date "start_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "offer_response"
+    t.integer "offer_response", default: 0
     t.index ["candidature_id"], name: "index_candidature_approvals_on_candidature_id"
   end
 

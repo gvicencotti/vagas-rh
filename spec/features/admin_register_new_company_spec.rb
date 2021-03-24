@@ -2,9 +2,7 @@ require 'rails_helper'
 
 feature 'admin register new company' do
   scenario 'successfully' do
-    user = User.create!(email: 'gustavo@email.com', password: '123456', complete_name: 'Gustavo Vicencotti',
-                        cpf: '1234567891011', phone_number: '(99)9999-9999',
-                        biography: 'Superior completo em contabilidade', role: 5)
+    user = user = create(:user, role: 5)
 
     login_as(user, :scope => :user)
     visit root_path
@@ -26,11 +24,8 @@ feature 'admin register new company' do
   end
 
   scenario 'and does not see button if company already registered' do
-    company = Company.create!(company_name: 'Batatinha Feliz', city: 'Santo Antonio de Posse - SP',
-                              address: 'Rua Dr. Jorge Tibirica, 114', district: 'Centro',
-                              cnpj: '12345678000133', site: 'www.batatinhafeliz.com.br')
-    user = User.create!(email: 'gustavo@batatinhafeliz.com', password: '123456', role: 5,
-                        company_id: company.id)
+    company = create(:company)
+    user = create(:user, role: 5, company_id: company.id)
     
 
     login_as(user, :role => :Admin)
@@ -41,12 +36,7 @@ feature 'admin register new company' do
   end
 
   scenario 'and attributes can´t be blank' do
-    Company.create!(company_name: 'Batatinha Feliz', city: 'Santo Antonio de Posse - SP',
-                    address: 'Rua Dr. Jorge Tibirica, 114', district: 'Centro',
-                    cnpj: '12345678000133', site: 'www.batatinhafeliz.com.br')
-    user = User.create!(email: 'gustavo@email.com', password: '123456', complete_name: 'Gustavo Vicencotti',
-                        cpf: '1234567891011', phone_number: '(99)9999-9999',
-                        biography: 'Superior completo em contabilidade', role: 5)
+    user = create(:user, role: 5)
     
     login_as(user, :role => :Admin)
     visit root_path
@@ -80,12 +70,8 @@ feature 'admin register new company' do
   end
 
   scenario 'admin register new company and goes back to home page' do
-    company = Company.create!(company_name: 'Batatinha Feliz', city: 'Santo Antonio de Posse - SP',
-                              address: 'Rua Dr. Jorge Tibirica, 114', district: 'Centro',
-                              cnpj: '12345678000133', site: 'www.batatinhafeliz.com.br')
-    user = User.create!(email: 'gustavo@email.com', password: '123456', complete_name: 'Gustavo Vicencotti',
-          cpf: '1234567891011', phone_number: '(99)9999-9999',
-          biography: 'Superior completo em contabilidade', role: 5)
+    company = create(:company)
+    user = create(:user, role: 5)
 
     login_as(user, :role => :Admin)
     visit root_path
@@ -104,12 +90,8 @@ feature 'admin register new company' do
   end
 
   scenario 'admin sees company information after registration' do
-    company = Company.create!(company_name: 'Batatinha Feliz', city: 'Santo Antonio de Posse - SP',
-                              address: 'Rua Dr. Jorge Tibirica, 114', district: 'Centro',
-                              cnpj: '12345678000133', site: 'www.batatinhafeliz.com.br')
-    user = User.create!(email: 'gustavo@email.com', password: '123456', complete_name: 'Gustavo Vicencotti',
-                        cpf: '1234567891011', phone_number: '(99)9999-9999',
-                        biography: 'Superior completo em contabilidade', role: 5, company_id: company.id)
+    company = create(:company)
+    user = create(:user, role: 5, company_id: company.id)
 
     login_as(user, :role => :Admin)
     visit root_path

@@ -2,12 +2,8 @@ require 'rails_helper'
 
 feature 'Admin registers new vacancy' do
   scenario 'from index page' do
-    company = Company.create!(company_name: 'Batatinha Feliz', city: 'Santo Antonio de Posse - SP',
-                              address: 'Rua Dr. Jorge Tibirica, 114', district: 'Centro',
-                              cnpj: '12345678000133', site: 'www.batatinhafeliz.com.br')
-    user = User.create!(email: 'gustavo@email.com', password: '123456', complete_name: 'Gustavo Vicencotti',
-                        cpf: '1234567891011', phone_number: '(99)9999-9999',
-                        biography: 'Superior completo em contabilidade', role: 5, company_id: company.id)
+    company = create(:company)
+    user = create(:user, role: 5, company_id: company.id)
     
     login_as(user, :role => :Admin)
     visit root_path
@@ -18,12 +14,8 @@ feature 'Admin registers new vacancy' do
   end
 
   scenario 'succesfully' do
-    company = Company.create!(company_name: 'Batatinha Feliz', city: 'Santo Antonio de Posse - SP',
-                              address: 'Rua Dr. Jorge Tibirica, 114', district: 'Centro',
-                              cnpj: '12345678000133', site: 'www.batatinhafeliz.com.br')
-    user = User.create!(email: 'gustavo@email.com', password: '123456', complete_name: 'Gustavo Vicencotti',
-                        cpf: '1234567891011', phone_number: '(99)9999-9999',
-                        biography: 'Superior completo em contabilidade', role: 5, company_id: company.id)
+    company = create(:company)
+    user = create(:user, role: 5, company_id: company.id)
     
     login_as(user, :role => :Admin)
     visit root_path
@@ -48,9 +40,7 @@ feature 'Admin registers new vacancy' do
   end
 
   scenario 'commom user does not see new vacancy button' do
-    user = User.create!(email: 'gustavo@email.com', password: '123456', complete_name: 'Gustavo Vicencotti',
-                        cpf: '1234567891011', phone_number: '(99)9999-9999',
-                        biography: 'Superior completo em contabilidade', role: 0)
+    user = create(:user, role: 0)
 
     login_as(user, :role => :Candidate)
     visit root_path
