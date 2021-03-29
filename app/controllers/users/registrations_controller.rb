@@ -15,13 +15,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # GET /resource/edit
-  
   # PUT /resource
   def update
     @user = User.find(params[:id])
-    
     user_params = params.require(:user).permit(:email, :complete_name, :cpf,
-    :phone_number, :biography)
+                                               :phone_number, :biography)
 
     if @user.update(user_params)
       redirect_to @user

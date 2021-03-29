@@ -3,15 +3,15 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  
+
   enum role: { Candidate: 0, Admin: 5 }
 
-  validates :complete_name, :cpf, :phone_number, :biography, presence: true, on: :update 
+  validates :complete_name, :cpf, :phone_number, :biography, presence: true, on: :update
+  validates :cpf, presence: true, uniqueness: true, on: :update
 
-  has_one :company
-   
+  has_one :company, through: :vacancies
+
   def company
     User.joins(:company)
   end
-
 end

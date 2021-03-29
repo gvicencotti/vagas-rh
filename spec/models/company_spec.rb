@@ -1,6 +1,13 @@
 require 'rails_helper'
 
-describe Company do
+RSpec.describe Company, type: :model do
+  it { should validate_presence_of(:company_name) }
+  it { should validate_presence_of(:city) }
+  it { should validate_presence_of(:address) }
+  it { should validate_presence_of(:district) }
+  it { should validate_presence_of(:cnpj) }
+  it { should validate_presence_of(:site) }
+
   it 'attributes cannot be blank' do
     company = Company.new
 
@@ -8,16 +15,4 @@ describe Company do
     expect(company.errors.count).to eq 6
   end
 
-  it 'errors messages are in portuguese' do
-    company = Company.new
-
-    company.valid?
-
-    expect(company.errors[:company_name]).to include('não pode ficar em branco')
-    expect(company.errors[:city]).to include('não pode ficar em branco')
-    expect(company.errors[:address]).to include('não pode ficar em branco')
-    expect(company.errors[:district]).to include('não pode ficar em branco')
-    expect(company.errors[:cnpj]).to include('não pode ficar em branco') 
-    expect(company.errors[:site]).to include('não pode ficar em branco')
-  end
 end

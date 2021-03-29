@@ -1,5 +1,4 @@
 class CandidaturesController < ApplicationController
-
   def create
     @candidature = Candidature.new
     @candidature.vacancy_id = params[:vacancy_id]
@@ -18,14 +17,10 @@ class CandidaturesController < ApplicationController
 
   def show
     @vacancy_id = params[:id]
-    @candidature = Candidature.where(' vacancy_id = ?', @vacancy_id )
-    
-    
+    @candidature = Candidature.where(' vacancy_id = ?', @vacancy_id)
   end
 
   def users_show
-    @candidature = Candidature.where(' user_id = ?', params[:user_id] )
+    @candidature = Candidature.where(' user_id = ?', params[:user_id])
   end
-
 end
-  

@@ -95,7 +95,8 @@ feature 'Visitor view vacancies' do
     vacancy = create(:vacancy, company_id: company.id)
     other_vacancy = Vacancy.create!(role: 'Cozinheiro A', description: 'Administração da cozinha e preparo de alimentos',
                                     requirements: 'Superior completo em Gastronomia e experiência anterior',
-                                    localization: 'Uberlândia - MG', expiration_date: '31/01/2021', company_id: company.id)
+                                    localization: 'Uberlândia - MG', expiration_date: '31/01/2021',
+                                    company_id: company.id)
     
     visit root_path
     click_on 'Vagas'
